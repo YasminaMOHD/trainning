@@ -41,7 +41,7 @@ public class Ex4 extends Application{
         String myHash = DatatypeConverter.printHexBinary(digest);
         System.out.println(myHash);
        output = new PrintWriter(new File("src/AssimentJava/pass.data"));
-      output.write(myHash);
+      output.write(password);
       output.close();
       launch(args);
   }  
@@ -80,6 +80,7 @@ public class Ex4 extends Application{
                 } catch (IOException ex) {
                     Logger.getLogger(Ex3.class.getName()).log(Level.SEVERE, null, ex);
                 }   
+        
          if(t2.getText().equals(text1)){
             primaryStage.setScene(s2);
             primaryStage.setTitle("Optinal Page");}
