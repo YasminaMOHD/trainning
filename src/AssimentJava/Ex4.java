@@ -41,7 +41,7 @@ public class Ex4 extends Application{
         String myHash = DatatypeConverter.printHexBinary(digest);
         System.out.println(myHash);
        output = new PrintWriter(new File("src/AssimentJava/pass.data"));
-      output.write(password);
+      output.write(myHash);
       output.close();
       launch(args);
   }  
@@ -81,7 +81,17 @@ public class Ex4 extends Application{
                     Logger.getLogger(Ex3.class.getName()).log(Level.SEVERE, null, ex);
                 }   
         
-         if(t2.getText().equals(text1)){
+     MessageDigest md1;
+          String myHash1=null;
+         try {
+             md1 = MessageDigest.getInstance("MD5");
+              md1.update(t2.getText().getBytes());
+        byte[] digests = md1.digest();
+         myHash1 = DatatypeConverter.printHexBinary(digests);
+         } catch (NoSuchAlgorithmException ex) {
+             Logger.getLogger(Ex4.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         if(myHash1.equals(text1)){
             primaryStage.setScene(s2);
             primaryStage.setTitle("Optinal Page");}
         });
